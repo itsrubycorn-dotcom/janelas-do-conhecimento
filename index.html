@@ -1,197 +1,133 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Janelas do Conhecimento</title>
-<style>
-:root{--navy:#173b63;--blue:#2d6e9f;--teal:#4f9b91;--cream:#fbf8f1;--ink:#243342;--muted:#617181;--yellow:#f2c66d;--line:#e5eaf0}
-*{box-sizing:border-box}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;color:var(--ink);background:#fff;line-height:1.55}
-header{background:var(--cream);border-bottom:1px solid #eee7dc}.nav{max-width:1120px;margin:auto;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:18px}
-.brand{display:flex;align-items:center;gap:12px;font-weight:800;color:var(--navy);font-size:1.1rem}.logo{width:42px;height:42px;border-radius:14px;background:var(--navy);color:white;display:grid;place-items:center;font-size:23px}
-nav{display:flex;gap:22px;flex-wrap:wrap}nav a{color:var(--navy);text-decoration:none;font-size:.94rem;font-weight:650}nav a:hover{text-decoration:underline}
-.hero{background:linear-gradient(115deg,#fbf8f1 0%,#f1f7f7 100%);padding:64px 24px 58px}.hero-inner{max-width:1120px;margin:auto;display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:center}
-.eyebrow{display:inline-block;background:#e1efed;color:#276b65;padding:6px 12px;border-radius:999px;font-size:.78rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
-h1{font-size:clamp(2.4rem,5vw,4.4rem);line-height:1.05;letter-spacing:-.04em;color:var(--navy);margin:18px 0}h1 span{color:var(--teal)}.hero p{font-size:1.1rem;color:#536779;max-width:610px}
-.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}.btn{border:0;border-radius:12px;padding:12px 18px;font-weight:750;text-decoration:none;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}.primary{background:var(--navy);color:white}.secondary{background:white;color:var(--navy);border:1px solid #d6e0e8}.btn:hover{transform:translateY(-1px)}
-.art{min-height:300px;display:grid;place-items:center;position:relative}.window{width:min(100%,360px);height:270px;border:12px solid white;border-radius:28px;background:#dcefed;box-shadow:0 18px 45px #173b6318;position:relative;overflow:hidden}.window:before{content:"";position:absolute;left:50%;top:0;bottom:0;width:10px;background:white;transform:translateX(-50%)}.window:after{content:"";position:absolute;top:50%;left:0;right:0;height:10px;background:white;transform:translateY(-50%)}.sun{position:absolute;width:74px;height:74px;border-radius:50%;background:var(--yellow);right:40px;top:35px}.hill{position:absolute;bottom:-25px;width:115%;height:145px;background:#76b7a8;border-radius:50% 50% 0 0;left:-8%}.hill2{position:absolute;bottom:-48px;width:115%;height:150px;background:#4f9b91;border-radius:50% 50% 0 0;right:-18%}.book{position:absolute;bottom:42px;left:50%;transform:translateX(-50%);font-size:62px;filter:drop-shadow(0 8px 5px #214a4330)}
-section{padding:58px 24px}.wrap{max-width:1120px;margin:auto}.section-head{max-width:680px;margin-bottom:28px}.section-head h2{font-size:2rem;line-height:1.2;color:var(--navy);margin:0 0 10px}.section-head p{color:var(--muted);margin:0}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{border:1px solid var(--line);border-radius:18px;padding:24px;background:white;box-shadow:0 6px 22px #1a42610a}.card-icon{width:48px;height:48px;border-radius:14px;background:#e8f3f1;display:grid;place-items:center;font-size:24px;margin-bottom:14px}.card h3{color:var(--navy);margin:0 0 8px}.card p{color:var(--muted);margin:0 0 16px}.text-link{color:var(--blue);font-weight:800;text-decoration:none;cursor:pointer}
-.learning{background:#f6f9fb}.tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}.tab{padding:10px 16px;border-radius:999px;border:1px solid #d7e1e9;background:white;color:var(--navy);font-weight:750;cursor:pointer}.tab.active{background:var(--navy);color:white;border-color:var(--navy)}.lesson{background:white;border:1px solid var(--line);border-radius:18px;padding:28px;max-width:850px}.lesson h3{margin-top:0;color:var(--navy)}.lesson p{color:#4f6070}.activity{margin-top:18px;background:#f8f5ed;padding:18px;border-radius:14px}.activity label{display:block;font-weight:750;margin-bottom:10px}.activity input{width:100%;max-width:420px;border:1px solid #cbd7df;border-radius:10px;padding:11px;font:inherit}.feedback{font-weight:750;margin-top:10px;min-height:24px}.quiz-options{display:grid;gap:9px}.quiz-options button{text-align:left;background:white;border:1px solid #d5dfe7;border-radius:10px;padding:11px 14px;cursor:pointer;font:inherit}.quiz-options button:hover{border-color:var(--teal);background:#f1f8f6}
-.sim-section{background:#f6f9fb}
-.sim-notice{background:#fff7e6;border:1px solid #f0d69b;color:#72551a;padding:15px 18px;border-radius:14px;margin:0 0 24px}
-.sim-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0}
-.sim-stat{background:white;border:1px solid var(--line);border-radius:15px;padding:18px}
-.sim-stat strong{display:block;color:var(--navy);font-size:1.8rem;line-height:1.2}
-.sim-stat span{color:var(--muted);font-size:.9rem}
-.sim-layout{display:grid;grid-template-columns:280px 1fr;gap:20px;align-items:start}
-.sim-users{display:grid;gap:9px}
-.sim-user{width:100%;text-align:left;background:white;border:1px solid var(--line);border-radius:12px;padding:13px 15px;cursor:pointer;color:var(--ink);font:inherit}
-.sim-user.active{border-color:var(--teal);box-shadow:0 0 0 2px #4f9b9120;background:#f1f8f6}
-.sim-user strong{display:block;color:var(--navy)}
-.sim-user small{color:var(--muted)}
-.sim-detail{background:white;border:1px solid var(--line);border-radius:18px;padding:24px;min-height:270px}
-.sim-detail h3{color:var(--navy);margin-top:0}
-.sim-tag{display:inline-block;border-radius:999px;padding:5px 10px;background:#e8f3f1;color:#276b65;font-size:.8rem;font-weight:800;margin:0 6px 8px 0}
-.sim-tag.warn{background:#fff1d6;color:#805b13}
-.sim-detail dl{display:grid;grid-template-columns:145px 1fr;gap:8px 14px;margin:18px 0}
-.sim-detail dt{font-weight:750;color:var(--muted)}
-.sim-detail dd{margin:0}
-.sim-footnote{font-size:.88rem;color:var(--muted);margin-top:16px}
-@media(max-width:760px){.sim-layout{grid-template-columns:1fr}.sim-summary{grid-template-columns:1fr}}
-.impact{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center}.impact-panel{background:var(--navy);color:white;border-radius:22px;padding:30px}.impact-panel h2{margin-top:0}.impact-panel p{color:#e0eaf3}.ods{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}.ods span{background:#ffffff1c;border:1px solid #ffffff35;border-radius:10px;padding:8px 12px;font-size:.9rem;font-weight:750}.list{display:grid;gap:14px}.list-item{display:flex;gap:14px;align-items:flex-start}.check{background:#e4f2ed;color:#267466;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;flex:none;font-weight:900}
-footer{background:#f6f8fa;border-top:1px solid var(--line);padding:28px 24px;color:var(--muted)}.foot{max-width:1120px;margin:auto;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.foot strong{color:var(--navy)}
-@media(max-width:760px){.nav{align-items:flex-start;flex-direction:column}nav{gap:12px}.hero-inner,.impact{grid-template-columns:1fr}.hero{padding-top:42px}.art{min-height:250px}.window{height:230px}.cards{grid-template-columns:1fr}.cards .card{padding:20px}section{padding:44px 20px}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#133c62">
+  <meta name="description" content="Janelas do Conhecimento: atividades progressivas de leitura, escrita e matemática para aprender no seu ritmo.">
+  <title>Janelas do Conhecimento | Educação para todos</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="config.js"></script>
+  <script defer src="curriculum.js"></script>
+  <script defer src="cloud.js"></script>
+  <script defer src="demo-data.js"></script>
+  <script defer src="app.js"></script>
 </head>
 <body>
-<header>
-  <div class="nav">
-    <div class="brand"><div class="logo">✦</div><span>Janelas do Conhecimento</span></div>
-    <nav aria-label="Navegação principal">
-      <a href="#sobre">Sobre</a><a href="#trilhas">Trilhas de aprendizagem</a><a href="#atividade">Pratique</a><a href="#impacto">Nosso propósito</a><a href="#simulacoes">Exemplos de uso</a>
-    </nav>
+  <header class="site-header">
+    <div class="nav-wrap container">
+      <a class="brand" href="#inicio" aria-label="Janelas do Conhecimento, ir ao início"><span class="brand-mark" aria-hidden="true">✦</span><span>Janelas do <strong>Conhecimento</strong></span></a>
+      <nav class="navigation" aria-label="Navegação principal">
+        <a href="#inicio">Início</a>
+        <a href="#trilhas">Exercícios</a>
+        <a href="#avaliar">Avaliação</a>
+        <a href="#painel">Painel de acessos</a>
+      </nav>
+      <button id="nav-user" type="button" class="small-pill" hidden aria-label="Sair da sessão">Sair</button>
+    </div>
+  </header>
+  <main>
+    <section id="inicio" class="hero">
+      <div class="container hero-layout">
+        <div>
+          <div class="eyebrow"><span class="tiny-spark">✳</span> Aprender abre caminhos</div>
+          <h1>Conhecimento que cresce <em>com você.</em></h1>
+          <p class="lead">Uma nova janela para aprender leitura, escrita e matemática. A cada acerto, surge um desafio diferente e um pouco mais difícil — sempre com explicações para ajudar.</p>
+          <div class="hero-actions">
+            <button class="button button-primary" id="start-button" type="button">Começar a aprender <span aria-hidden="true">→</span></button>
+            <a class="button button-outline" href="#como-funciona">Como funciona</a>
+          </div>
+          <div class="hero-points"><span>✓ Gratuito</span><span>✓ No seu ritmo</span><span>✓ 3 trilhas</span></div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="bubble bubble-one">ABC <small>✦</small></div>
+          <div class="bubble bubble-two">1 + 2 = 3</div>
+          <div class="illustration-window">
+            <div class="illus-sun"></div><div class="illus-hill hill-back"></div><div class="illus-hill hill-front"></div><div class="window-vertical"></div><div class="window-horizontal"></div>
+          </div>
+          <div class="book-drawing"><span>📖</span></div>
+          <div class="star-dot star-a">✳</div><div class="star-dot star-b">✦</div>
+        </div>
+      </div>
+    </section>
+    <section id="como-funciona" class="section compact-section">
+      <div class="container">
+        <div class="section-intro"><span class="overline">Um passo de cada vez</span><h2>Como você vai aprender?</h2><p>Comece pelo básico, entenda o assunto e avance conforme resolve os desafios.</p></div>
+        <div class="steps">
+          <div class="step"><div class="step-number">01</div><h3>Identifique-se</h3><p>Informe seu primeiro nome e sua data de nascimento para iniciar a sessão.</p></div>
+          <div class="step"><div class="step-number">02</div><h3>Escolha uma trilha</h3><p>Pratique leitura, escrita ou matemática e leia a explicação antes de responder.</p></div>
+          <div class="step"><div class="step-number">03</div><h3>Avance de nível</h3><p>A cada resposta correta, aparece uma questão inédita e o nível de dificuldade aumenta.</p></div>
+        </div>
+      </div>
+    </section>
+    <section id="trilhas" class="section study-section">
+      <div class="container">
+        <div class="section-intro"><span class="overline">Sua jornada começa aqui</span><h2>Escolha uma trilha</h2><p>Há 25 desafios em cada área, organizados em cinco níveis. Os exercícios mudam conforme você avança.</p></div>
+        <div class="subjects" role="group" aria-label="Trilhas de aprendizagem">
+          <button class="subject-card selected" type="button" data-subject="leitura" aria-pressed="true"><span class="subject-icon">📖</span><span><strong>Leitura</strong><small>Compreender textos e descobrir ideias</small></span><span class="subject-arrow" aria-hidden="true">↗</span></button>
+          <button class="subject-card" type="button" data-subject="escrita" aria-pressed="false"><span class="subject-icon">✍️</span><span><strong>Escrita</strong><small>Palavras, frases e comunicação</small></span><span class="subject-arrow" aria-hidden="true">↗</span></button>
+          <button class="subject-card" type="button" data-subject="matematica" aria-pressed="false"><span class="subject-icon">🔢</span><span><strong>Matemática</strong><small>Números, lógica e problemas</small></span><span class="subject-arrow" aria-hidden="true">↗</span></button>
+        </div>
+        <div class="learning-shell" id="learning-shell">
+          <div class="learning-head">
+            <div><span class="learning-eyebrow" id="subject-label">Trilha de leitura</span><h3 id="exercise-heading">Pronto para aprender?</h3></div>
+            <div class="level-pill" id="level-pill">Nível 1 de 5</div>
+          </div>
+          <div class="progress-row"><div class="progress-label"><span id="exercise-counter">Desafio 1 de 25</span><span id="correct-counter">0 acertos</span></div><div class="progress-bar" role="progressbar" aria-label="Progresso da trilha" aria-valuemin="0" aria-valuemax="25" aria-valuenow="0" id="progress-bar"><div class="progress-fill" id="progress-fill"></div></div></div>
+          <div id="study-locked" class="locked-state"><div class="locked-emoji">🔐</div><h3>Uma janela está prestes a se abrir!</h3><p>Para começar, entre com seu nome e sua data de nascimento.</p><button id="study-login" class="button button-primary" type="button">Entrar e estudar</button></div>
+          <div id="exercise-content" hidden>
+            <div class="lesson-callout"><div class="lesson-title-row"><span class="lesson-icon">💡</span><strong>Antes de responder: entenda o tema</strong></div><h4 id="explanation-title"></h4><p id="explanation-text"></p><div class="lesson-example" id="explanation-example"></div></div>
+            <div class="question-zone"><span class="question-kicker">AGORA É SUA VEZ</span><p id="question-context" class="question-context" hidden></p><h4 id="question-text"></h4><div id="answer-options" class="answer-options" role="group" aria-label="Alternativas de resposta"></div><p id="answer-feedback" class="answer-feedback" role="status" aria-live="polite"></p><div class="answer-actions"><button class="button button-primary" id="next-question" type="button" hidden>Próximo desafio →</button><button class="button button-outline" id="retry-question" type="button" hidden>Tentar novamente</button></div></div>
+          </div>
+          <div id="completed-content" class="completed-state" hidden><div class="completed-emoji">🏆</div><h3>Trilha concluída!</h3><p>Você completou todos os níveis desta trilha. Continue explorando as outras áreas ou recomece para revisar.</p><button class="button button-primary" type="button" id="restart-subject">Refazer trilha</button></div>
+        </div>
+        <p class="study-footnote">As explicações são educativas e o avanço é adaptativo: se errar, você pode rever a explicação e tentar de novo. O projeto não substitui acompanhamento escolar.</p>
+      </div>
+    </section>
+    <section id="avaliar" class="section rating-section">
+      <div class="container rating-grid">
+        <div><span class="overline">Sua opinião importa</span><h2>Conte como foi sua experiência</h2><p>Depois de experimentar as atividades, compartilhe o que achou. Isso nos ajuda a tornar o Janelas do Conhecimento melhor para todos.</p><div class="rating-badge">💬 Feedback real dos participantes</div></div>
+        <form id="feedback-form" class="form-card">
+          <label for="rating">Como foi sua experiência?</label>
+          <select id="rating" required><option value="">Selecione uma nota</option><option value="5">5 — Muito boa</option><option value="4">4 — Boa</option><option value="3">3 — Regular</option><option value="2">2 — Difícil</option><option value="1">1 — Muito difícil</option></select>
+          <label for="ease">Você conseguiu entender os exercícios?</label>
+          <select id="ease" required><option value="">Selecione uma opção</option><option value="sim">Sim</option><option value="parcialmente">Em parte</option><option value="nao">Não</option></select>
+          <label for="feedback-text">O que você mais gostou? O que podemos melhorar?</label>
+          <textarea id="feedback-text" rows="4" minlength="2" maxlength="600" placeholder="Escreva sua opinião..." required></textarea>
+          <button class="button button-primary full-width" type="submit" id="submit-feedback">Enviar avaliação</button>
+          <div id="feedback-status" class="form-status" role="status" aria-live="polite"></div>
+          <p class="form-disclaimer">As avaliações são enviadas ao banco de dados somente quando a integração online estiver ativada.</p>
+        </form>
+      </div>
+    </section>
+    <section id="painel" class="section admin-section">
+      <div class="container">
+        <div class="section-intro"><span class="overline">Acompanhamento do projeto</span><h2>Painel de acessos</h2><p>Consulte registros de participação e avaliações. Quando o armazenamento online não está ativo, o painel apresenta uma amostra de demonstração separada dos dados reais.</p></div>
+        <div id="admin-login-panel" class="admin-login-card">
+          <div class="admin-icon">📊</div><div><h3>Área da responsável pelo projeto</h3><p>Quando a integração estiver ativa, informe o e-mail e a senha do administrador criado no Firebase.</p></div>
+          <form id="admin-form" class="admin-form"><label for="admin-email">E-mail do administrador</label><input type="email" id="admin-email" placeholder="seuemail@exemplo.com" autocomplete="username" required><label for="admin-password">Senha</label><input type="password" id="admin-password" placeholder="Sua senha" autocomplete="current-password" required><button type="submit" class="button button-primary">Acessar painel</button></form>
+          <p id="admin-login-status" class="form-status" role="status"></p>
+        </div>
+        <div id="admin-dashboard" hidden>
+          <div class="demo-switcher" id="demo-switcher" hidden><button type="button" id="show-sample" class="button button-outline" aria-pressed="true">Ver exemplo (12)</button><button type="button" id="show-local" class="button button-outline" aria-pressed="false">Ver meus acessos</button></div>
+          
+          <div class="dashboard-top"><div class="dashboard-alert" id="dashboard-mode"></div><button id="dashboard-logout" class="button button-outline" type="button">Sair do painel</button></div>
+          <div class="stats-grid"><div class="stat-card"><span>Registros exibidos</span><strong id="stat-visits">0</strong><small>Entradas na visualização atual</small></div><div class="stat-card"><span>Perfis/dispositivos únicos</span><strong id="stat-unique">0</strong><small>Estimativa de visitantes únicos</small></div><div class="stat-card"><span>Avaliações recebidas</span><strong id="stat-feedback">0</strong><small>Respostas enviadas pelos usuários</small></div></div>
+          <div class="table-card"><div class="table-heading"><div><h3>Histórico de entradas</h3><p>Nome, data e horário de cada registro exibido.</p></div><button id="download-visits" class="button button-outline" type="button">Exportar CSV</button></div><div class="table-scroll"><table><thead><tr><th>Nome informado</th><th>Data</th><th>Horário (Brasília)</th></tr></thead><tbody id="visits-body"><tr><td colspan="3">Nenhum acesso registrado.</td></tr></tbody></table></div></div>
+          <div class="table-card"><div class="table-heading"><div><h3>Avaliações enviadas</h3><p>Feedback dos participantes após praticar.</p></div><button id="download-feedback" class="button button-outline" type="button">Exportar CSV</button></div><div class="table-scroll"><table><thead><tr><th>Nome</th><th>Nota</th><th>Compreensão</th><th>Comentário</th><th>Data e hora</th></tr></thead><tbody id="feedback-body"><tr><td colspan="5">Nenhuma avaliação registrada.</td></tr></tbody></table></div></div>
+          <p class="admin-footnote">O total de perfis únicos é aproximado e não é uma contagem verificada de pessoas: o mesmo participante pode acessar de dispositivos diferentes. Os horários são registrados pelo servidor quando o modo online está configurado.</p>
+        </div>
+      </div>
+    </section>
+    <section class="section mission-section"><div class="container mission"><div><span class="overline">Nosso propósito</span><h2>Uma educação com mais oportunidades.</h2><p>O Janelas do Conhecimento é um projeto acadêmico de inclusão digital e apoio à aprendizagem, idealizado para crianças e adolescentes de comunidades de Osasco (SP).</p><div class="ods"><span>ODS 4 · Educação de qualidade</span><span>ODS 10 · Redução das desigualdades</span></div></div><div class="mission-illustration" aria-hidden="true">🌱<span>Aprender hoje é crescer amanhã.</span></div></div></section>
+  </main>
+  <footer><div class="container footer-inner"><div><strong>✦ Janelas do Conhecimento</strong><p>Promovendo educação de qualidade na comunidade</p></div><div><p>Projeto extensionista · Gestão da Tecnologia da Informação</p><p>Osasco, São Paulo · 2026</p></div></div></footer>
+  <div id="login-overlay" class="overlay" hidden>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="entry-title">
+      <button type="button" class="modal-close" id="close-login" aria-label="Fechar janela">×</button>
+      <span class="modal-emoji">👋</span><span class="overline">Seja bem-vindo(a)</span><h2 id="entry-title">Como podemos chamar você?</h2><p class="modal-description">Precisamos apenas do seu nome e data de nascimento para abrir sua sessão de estudos.</p>
+      <form id="entry-form"><label for="student-name">Nome</label><input id="student-name" type="text" autocomplete="given-name" minlength="2" maxlength="60" placeholder="Seu nome" required><label for="student-birth">Data de nascimento</label><input id="student-birth" type="date" required><div class="privacy-note">🔒 Sua data de nascimento não é enviada nem salva no banco de acessos. Se o modo online estiver ativado, armazenamos somente o nome informado e a data/hora da entrada, para avaliação acadêmica do projeto.</div><label class="check-row"><input id="guardian-consent" type="checkbox" required><span id="consent-label">Eu autorizo o registro do meu nome e do horário de acesso para fins de avaliação acadêmica.</span></label><button id="entry-submit" type="submit" class="button button-primary full-width">Entrar na plataforma →</button><p class="form-status" role="status" id="entry-status"></p></form>
+    </div>
   </div>
-</header>
-<main>
-  <section class="hero" id="sobre">
-    <div class="hero-inner">
-      <div>
-        <span class="eyebrow">Aprender abre caminhos</span>
-        <h1>Uma janela para <span>novas descobertas.</span></h1>
-        <p>Um espaço de apoio à aprendizagem, com atividades de leitura, escrita e conhecimentos escolares. Explore conteúdos, pratique no seu ritmo e descubra que aprender pode ser uma aventura.</p>
-        <div class="actions"><a class="btn primary" href="#trilhas">Começar a aprender →</a><a class="btn secondary" href="#impacto">Conheça o projeto</a></div>
-      </div>
-      <div class="art" aria-label="Ilustração de uma janela aberta para um cenário verde com um livro">
-        <div class="window"><div class="sun"></div><div class="hill"></div><div class="hill2"></div><div class="book">📖</div></div>
-      </div>
-    </div>
-  </section>
-  <section>
-    <div class="wrap">
-      <div class="section-head"><h2>Conhecimento para cada etapa</h2><p>Escolha uma área e comece com conteúdos simples, atividades práticas e pequenas descobertas.</p></div>
-      <div class="cards">
-        <article class="card"><div class="card-icon">📚</div><h3>Leitura</h3><p>Leia histórias curtas, descubra palavras novas e desenvolva a compreensão de textos.</p><a class="text-link" href="#trilhas" onclick="showLesson('leitura')">Explorar leitura →</a></article>
-        <article class="card"><div class="card-icon">✍️</div><h3>Escrita</h3><p>Pratique a escrita, organize ideias e construa frases com clareza e criatividade.</p><a class="text-link" href="#trilhas" onclick="showLesson('escrita')">Explorar escrita →</a></article>
-        <article class="card"><div class="card-icon">🔢</div><h3>Matemática</h3><p>Revise conceitos e resolva desafios de raciocínio lógico passo a passo.</p><a class="text-link" href="#trilhas" onclick="showLesson('matematica')">Explorar matemática →</a></article>
-      </div>
-    </div>
-  </section>
-  <section class="learning" id="trilhas">
-    <div class="wrap">
-      <div class="section-head"><h2>Trilhas de aprendizagem</h2><p>Conteúdos demonstrativos para aprender e praticar. Selecione uma trilha para abrir a atividade.</p></div>
-      <div class="tabs" role="tablist">
-        <button class="tab active" id="tab-leitura" onclick="showLesson('leitura')">Leitura</button>
-        <button class="tab" id="tab-escrita" onclick="showLesson('escrita')">Escrita</button>
-        <button class="tab" id="tab-matematica" onclick="showLesson('matematica')">Matemática</button>
-      </div>
-      <div class="lesson" id="lesson" aria-live="polite">
-        <h3>Leitura: A semente curiosa</h3>
-        <p>Uma pequena semente caiu perto de uma janela. Todos os dias, recebia um pouco de água e luz. Com paciência, criou raízes, abriu suas primeiras folhas e se transformou em uma planta forte.</p>
-        <div class="activity"><label for="answer">O que ajudou a semente a crescer?</label><input id="answer" placeholder="Escreva sua resposta"><button class="btn primary" style="margin-top:10px" onclick="checkReading()">Conferir resposta</button><div class="feedback" id="feedback"></div></div>
-      </div>
-    </div>
-  </section>
-  <section id="atividade">
-    <div class="wrap">
-      <div class="section-head"><h2>Hora de praticar!</h2><p>Um desafio rápido para exercitar o raciocínio. Você pode tentar novamente sempre que quiser.</p></div>
-      <div class="lesson">
-        <h3>Desafio de matemática</h3><p>Na biblioteca da comunidade havia 12 livros. Chegaram mais 8 livros. Quantos livros há agora?</p>
-        <div class="quiz-options">
-          <button onclick="checkQuiz(18)">18 livros</button><button onclick="checkQuiz(20)">20 livros</button><button onclick="checkQuiz(21)">21 livros</button>
-        </div>
-        <div class="feedback" id="quiz-feedback" aria-live="polite"></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sim-section" id="simulacoes">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>Exemplos de uso da plataforma</h2>
-        <p>Explore cinco exemplos de utilização das atividades e dos recursos da plataforma.</p>
-      </div>
-      <div class="sim-summary">
-        <div class="sim-stat"><strong>5</strong><span>exemplos de uso</span></div>
-        <div class="sim-stat"><strong>3</strong><span>áreas educacionais verificadas</span></div>
-        <div class="sim-stat"><strong>1</strong><span>exemplo de avaliação</span></div>
-      </div>
-      <div class="sim-layout">
-        <div class="sim-users" aria-label="Selecionar exemplo de uso">
-          <button class="sim-user active" onclick="showSimulation(0)" id="sim-user-0"><strong>Ana · 9 anos</strong><small>Leitura e interpretação</small></button>
-          <button class="sim-user" onclick="showSimulation(1)" id="sim-user-1"><strong>Pedro · 11 anos</strong><small>Matemática</small></button>
-          <button class="sim-user" onclick="showSimulation(2)" id="sim-user-2"><strong>Júlia · 13 anos</strong><small>Produção de escrita</small></button>
-          <button class="sim-user" onclick="showSimulation(3)" id="sim-user-3"><strong>Lucas · 15 anos</strong><small>Matemática · tentativa e correção</small></button>
-          <button class="sim-user" onclick="showSimulation(4)" id="sim-user-4"><strong>Maria · educadora</strong><small>Avaliação da navegação</small></button>
-        </div>
-        <div class="sim-detail" id="simulation-detail" aria-live="polite">
-          <span class="sim-tag">Exemplo 1 de 5</span><span class="sim-tag">Leitura</span>
-          <h3>Ana · 9 anos</h3>
-          <dl>
-            <dt>Atividade</dt><dd>Leitura: A semente curiosa</dd>
-            <dt>Resposta de exemplo</dt><dd>“Água e luz ajudaram a semente a crescer.”</dd>
-            <dt>Retorno esperado</dt><dd>Mensagem positiva reconhecendo a resposta.</dd>
-            <dt>Resultado do teste</dt><dd>Resposta reconhecida pela regra atual da atividade.</dd>
-            <dt>Observação</dt><dd>O exercício permite praticar a compreensão de uma informação explícita no texto.</dd>
-          </dl>
-        </div>
-      </div>
-      <p class="sim-footnote" style="margin-top:12px;font-size:12px;opacity:.75">Perfis e respostas ilustrativos, sem participação real de estudantes ou educadores.</p>
-    </div>
-  </section>
-
-  <section id="impacto">
-    <div class="wrap impact">
-      <div class="impact-panel"><h2>Educação que transforma</h2><p>O projeto Janelas do Conhecimento propõe utilizar a tecnologia como ferramenta de apoio educacional para crianças e adolescentes de comunidades de Osasco – SP, incentivando a leitura, a escrita e a aprendizagem.</p><p>Esta página é um protótipo demonstrativo de uma possível plataforma de apoio escolar.</p><div class="ods"><span>ODS 4 · Educação</span><span>ODS 10 · Igualdade</span><span>ODS 11 · Comunidades</span></div></div>
-      <div class="list">
-        <div class="list-item"><div class="check">✓</div><div><strong>Aprendizagem complementar</strong><br><span style="color:var(--muted)">Materiais e exercícios para apoiar os estudos além da sala de aula.</span></div></div>
-        <div class="list-item"><div class="check">✓</div><div><strong>Acesso simples</strong><br><span style="color:var(--muted)">Interface responsiva, acessível por computador, tablet ou celular.</span></div></div>
-        <div class="list-item"><div class="check">✓</div><div><strong>Inclusão digital</strong><br><span style="color:var(--muted)">Estímulo ao uso consciente da tecnologia como recurso de aprendizagem.</span></div></div>
-        <div class="list-item"><div class="check">✓</div><div><strong>Melhoria contínua</strong><br><span style="color:var(--muted)">O projeto poderá evoluir a partir das opiniões de estudantes e educadores.</span></div></div>
-      </div>
-    </div>
-  </section>
-</main>
-<footer><div class="foot"><div><strong>Janelas do Conhecimento</strong><br>Promovendo Educação de Qualidade na Comunidade</div><div>Projeto acadêmico · Gestão da Tecnologia da Informação<br>Osasco – SP</div></div></footer>
-<script>
-const lessons={
-leitura:{title:'Leitura: A semente curiosa',body:'Uma pequena semente caiu perto de uma janela. Todos os dias, recebia um pouco de água e luz. Com paciência, criou raízes, abriu suas primeiras folhas e se transformou em uma planta forte.',question:'O que ajudou a semente a crescer?',placeholder:'Escreva sua resposta'},
-escrita:{title:'Escrita: Complete a ideia',body:'Escrever é uma forma de compartilhar pensamentos. Uma boa frase apresenta uma ideia completa. Leia o começo e termine com suas próprias palavras: “Eu gosto de aprender porque...”',question:'Complete a frase com suas ideias:',placeholder:'Eu gosto de aprender porque...'},
-matematica:{title:'Matemática: Pense e resolva',body:'A matemática aparece em muitas situações do dia a dia. Imagine que você tem 15 lápis e empresta 6 para um colega.',question:'Com quantos lápis você fica?',placeholder:'Digite o resultado'}
-};
-function showLesson(key){
- const item=lessons[key]; document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
- document.getElementById('tab-'+key).classList.add('active');
- const extra=key==='matematica'?'<button class="btn primary" style="margin-top:10px" onclick="checkMath()">Conferir resposta</button>':(key==='escrita'?'<button class="btn primary" style="margin-top:10px" onclick="checkWriting()">Conferir resposta</button>':'<button class="btn primary" style="margin-top:10px" onclick="checkReading()">Conferir resposta</button>');
- document.getElementById('lesson').innerHTML='<h3>'+item.title+'</h3><p>'+item.body+'</p><div class="activity"><label for="answer">'+item.question+'</label><input id="answer" placeholder="'+item.placeholder+'">'+extra+'<div class="feedback" id="feedback"></div></div>';
-}
-function checkReading(){const v=(document.getElementById('answer')?.value||'').toLowerCase();const f=document.getElementById('feedback');if(!v.trim()){f.textContent='Digite uma resposta para continuar.';f.style.color='#9a5a00';return}if(v.includes('água')||v.includes('agua')||v.includes('luz')||v.includes('cuidado')){f.textContent='Muito bem! Água, luz e cuidado ajudaram a semente.';f.style.color='#267466'}else{f.textContent='Boa tentativa! Releia o texto e procure o que a semente recebia todos os dias.';f.style.color='#9a5a00'}}
-function checkWriting(){const v=(document.getElementById('answer')?.value||'').trim();const f=document.getElementById('feedback');if(!v){f.textContent='Escreva sua continuação para concluir a atividade.';f.style.color='#9a5a00';return}if(v.length<12){f.textContent='Boa ideia! Tente desenvolver um pouco mais sua frase.';f.style.color='#9a5a00'}else{f.textContent='Muito bem! Você completou a frase e compartilhou sua ideia.';f.style.color='#267466'}}
-function checkMath(){const v=(document.getElementById('answer')?.value||'').trim();const f=document.getElementById('feedback');if(v==='9'){f.textContent='Correto! 15 − 6 = 9 lápis.';f.style.color='#267466'}else{f.textContent='Tente novamente: calcule 15 menos 6.';f.style.color='#9a5a00'}}
-function checkQuiz(n){const f=document.getElementById('quiz-feedback');if(n===20){f.textContent='Isso mesmo! 12 + 8 = 20 livros. Parabéns!';f.style.color='#267466'}else{f.textContent='Quase! Some 12 com 8 e tente mais uma vez.';f.style.color='#9a5a00'}}
-
-const simulations = [
- {name:'Ana',age:'9 anos',area:'Leitura e interpretação',activity:'Leitura: A semente curiosa',response:'“Água e luz ajudaram a semente a crescer.”',feedback:'Muito bem! Água, luz e cuidado ajudaram a semente.',result:'Resposta reconhecida pela regra atual da atividade.',observation:'O exercício permite praticar a identificação de informações explícitas em um texto curto.',tag:'Leitura'},
- {name:'Pedro',age:'11 anos',area:'Matemática',activity:'Matemática: Pense e resolva',response:'9',feedback:'Correto! 15 − 6 = 9 lápis.',result:'Resposta correta reconhecida pelo verificador da atividade.',observation:'O exercício trabalha subtração simples em uma situação cotidiana.',tag:'Matemática'},
- {name:'Júlia',age:'13 anos',area:'Produção de escrita',activity:'Escrita: Complete a ideia',response:'“Eu gosto de aprender porque descubro coisas novas e posso ajudar outras pessoas.”',feedback:'Muito bem! Você completou a frase e compartilhou sua ideia.',result:'Resposta preenchida e feedback de conclusão exibido no fluxo apresentado.',observation:'A atividade incentiva a expressão de ideias. A avaliação da qualidade do texto ainda depende de análise humana.',tag:'Escrita'},
- {name:'Lucas',age:'15 anos',area:'Matemática · tentativa e correção',activity:'Matemática: Pense e resolva',response:'Primeira tentativa: 8. Segunda tentativa: 9.',feedback:'Na primeira tentativa, a plataforma orienta a tentar novamente; na segunda, reconhece o resultado correto.',result:'Fluxo de erro e nova tentativa demonstrado com sucesso.',observation:'O retorno orientativo pode estimular a revisão do cálculo sem encerrar a atividade na primeira resposta incorreta.',tag:'Matemática'},
- {name:'Maria',age:'35 anos · educadora',area:'Avaliação qualitativa da navegação',activity:'Navegação pelas áreas de leitura, escrita e matemática',response:'Comentário de exemplo: “A organização das áreas é simples e os exercícios são fáceis de localizar.”',feedback:'Sugestão de melhoria: incluir conteúdos por faixa etária e uma forma de acompanhar atividades concluídas.',result:'Exemplo de avaliação qualitativa da navegação.',observation:'O exemplo destaca oportunidades de evolução, como classificação por idade e acompanhamento de progresso.',tag:'Avaliação'}
-];
-function showSimulation(index){
- const s=simulations[index];
- document.querySelectorAll('.sim-user').forEach((el,i)=>el.classList.toggle('active',i===index));
- document.getElementById('simulation-detail').innerHTML=
-  '<span class="sim-tag">Exemplo '+(index+1)+' de 5</span><span class="sim-tag">'+s.tag+'</span>'+
-  '<h3>'+s.name+' · '+s.age+'</h3><dl>'+
-  '<dt>Área</dt><dd>'+s.area+'</dd>'+
-  '<dt>Atividade</dt><dd>'+s.activity+'</dd>'+
-  '<dt>Resposta de exemplo</dt><dd>'+s.response+'</dd>'+
-  '<dt>Retorno esperado</dt><dd>'+s.feedback+'</dd>'+
-  '<dt>Resultado do teste</dt><dd>'+s.result+'</dd>'+
-  '<dt>Observação</dt><dd>'+s.observation+'</dd></dl>'+
-  '';
-}
-
-</script>
 </body>
 </html>

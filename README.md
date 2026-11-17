@@ -1,15 +1,60 @@
-# Janelas do Conhecimento
+# Prévia de apresentação com 12 registros de demonstração
 
-Protótipo acadêmico de apoio educacional para leitura, escrita e matemática.
+Esta edição traz **12 registros sintéticos para demonstração do painel**, com nomes brasileiros plausíveis e datas ilustrativas entre outubro e novembro de 2026. **Não são acessos reais e não comprovam aplicação comunitária**. Esses dados permanecem separados dos registros coletados online.
 
-## Como abrir
-Abra `index.html` em um navegador moderno. Não precisa instalar programas ou ter acesso à internet.
+O painel apresenta uma identificação discreta “Dados ilustrativos”, sem banners de alerta. A exportação CSV mantém uma coluna que identifica a origem dos registros; a amostra nunca é enviada ao Firebase e deixa de aparecer quando a integração online está configurada.
 
-## Publicar no GitHub
-1. Entre em https://github.com e crie um repositório novo.
-2. Envie o arquivo `index.html` e este `README.md` pelo botão **Add file > Upload files**.
-3. Confirme em **Commit changes**.
-4. Para publicar como site, abra **Settings > Pages**, escolha **Deploy from a branch**, selecione a branch principal e a pasta `/ (root)`, e salve.
+Para comprovar participação acadêmica, publique o site e convide pessoas reais a acessá-lo, com consentimento adequado; configure o Firebase para registrar horário do servidor e feedbacks. Veja o guia.
 
-## Observação
-Os perfis e respostas exibidos na seção de exemplos são ilustrativos. Não constituem dados de participantes reais nem evidência de aplicação na comunidade.
+---
+
+# Janelas do Conhecimento — edição 2026
+
+Projeto extensionista de inclusão digital e apoio educacional para crianças e adolescentes de Osasco (SP).
+
+**Site refeito do zero** em HTML5, CSS3 e JavaScript sem dependências de compilação. Pode ser publicado gratuitamente no GitHub Pages.
+
+## O que há nesta versão
+
+- Visual renovado e adaptável a celulares, tablets e computadores.
+- **75 exercícios originais**: 25 de leitura, 25 de escrita e 25 de matemática.
+- **5 níveis por matéria**, com explicação contextual e exemplo antes de cada exercício.
+- A cada **acerto**, a próxima questão é mostrada automaticamente e a dificuldade progride; em caso de erro, a pessoa recebe orientação e pode tentar novamente.
+- Identificação de entrada **somente com nome e data de nascimento** (não é autenticação forte).
+- Campo de consentimento/ciência do participante ou de seu responsável.
+- Área de avaliação para registrar feedbacks verdadeiros dos participantes.
+- Painel administrativo com acessos, identificadores anônimos únicos, data e horário (fuso de Brasília) e feedbacks, exportáveis em CSV.
+- Dados online armazenados no Firebase (opcional, mas **necessário para comprovar acessos de vários dispositivos**).
+
+## Executar localmente
+
+Na pasta em que está `index.html`, rode `python -m http.server 8000` e abra `http://localhost:8000`. Na hospedagem GitHub Pages o site funciona sem servidor próprio.
+
+**Sem configurar o Firebase:** as atividades funcionam e a contagem de acessos é **apenas deste navegador**; nomes não são salvos no modo local e os feedbacks não são enviados. Esse modo não serve como prova de acessos de outras pessoas.
+
+## Habilitar acessos e avaliações reais
+
+Siga `GUIA_PUBLICACAO_E_FIREBASE.md`. É necessário criar um projeto no Firebase, habilitar Authentication (anônima e email/senha), Cloud Firestore e configurar as regras de segurança. A responsável acessa o painel com email/senha distintos da identificação simples do estudante.
+
+### Dados coletados
+
+No modo online, apenas `name`, `uid` anônimo e `visitedAt` (data/hora do servidor) são registrados em `visits`. Em `feedbacks` ficam `name`, `uid`, avaliação, comentário e horário. **A data de nascimento não é transmitida, armazenada nem exportada.** Ela é lida na tela apenas para adaptar o texto de consentimento. Um nome declarado pelo próprio participante não comprova identidade. A contagem de dispositivos únicos também não é necessariamente a contagem exata de pessoas.
+
+Se você realizar a atividade com menores de idade, obtenha autorização adequada dos responsáveis, não divulgue nomes ou horários publicamente e inclua somente evidências consentidas no relatório da faculdade. Armazene e elimine registros conforme a finalidade acadêmica e as orientações institucionais.
+
+## Estrutura
+
+- `index.html`: interface, formulários, trilhas, painel.
+- `style.css`: identidade visual responsiva.
+- `curriculum.js`: banco completo com 75 perguntas e explicações.
+- `app.js`: lógica dos desafios progressivos, login, dashboard, exportação CSV.
+- `cloud.js`: integração segura pelo SDK do Firebase.
+- `config.js`: configurações públicas do aplicativo Firebase e email do administrador.
+- `firestore.rules`: regras de segurança que só permitem ao administrador ler registros.
+- `GUIA_PUBLICACAO_E_FIREBASE.md`: tutorial de configuração e atualização do GitHub.
+
+## Objetivos do projeto
+
+Relaciona-se ao ODS 4 — Educação de qualidade e ao ODS 10 — Redução das desigualdades.
+
+**Aviso:** não envie senhas de administração ao GitHub. A configuração JavaScript web Firebase (incluindo `apiKey`) é pública por projeto; a proteção dos registros está nas regras do Firestore e no Firebase Authentication.
