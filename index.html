@@ -20,6 +20,7 @@
       <nav class="navigation" aria-label="Navegação principal">
         <a href="#inicio">Início</a>
         <a href="#trilhas">Exercícios</a>
+        <a href="#comentarios">Comentários</a>
         <a href="#avaliar">Avaliação</a>
         <a href="#painel">Painel de acessos</a>
       </nav>
@@ -57,6 +58,32 @@
           <div class="step"><div class="step-number">01</div><h3>Identifique-se</h3><p>Informe seu primeiro nome e sua data de nascimento para iniciar a sessão.</p></div>
           <div class="step"><div class="step-number">02</div><h3>Escolha uma trilha</h3><p>Pratique leitura, escrita ou matemática e leia a explicação antes de responder.</p></div>
           <div class="step"><div class="step-number">03</div><h3>Avance de nível</h3><p>A cada resposta correta, aparece uma questão inédita e o nível de dificuldade aumenta.</p></div>
+        </div>
+      </div>
+    </section>
+    <section id="comentarios" class="section comments-section" aria-labelledby="comments-heading">
+      <div class="container">
+        <div class="section-intro">
+          <span class="overline">Comentários sobre a plataforma</span>
+          <h2 id="comments-heading">Três perspectivas sobre o site</h2>
+          <p>Veja exemplos de como os participantes podem comentar a experiência com as atividades.</p>
+        </div>
+        <div class="feedback-examples-grid">
+          <article class="feedback-example-card">
+            <span class="feedback-example-icon" aria-hidden="true">💬</span>
+            <p>“Gostei do site porque é fácil encontrar as atividades e começar a estudar.”</p>
+            <small>Exemplo de comentário · Navegação</small>
+          </article>
+          <article class="feedback-example-card">
+            <span class="feedback-example-icon" aria-hidden="true">💡</span>
+            <p>“As explicações antes das perguntas ajudam a entender melhor cada assunto.”</p>
+            <small>Exemplo de comentário · Aprendizagem</small>
+          </article>
+          <article class="feedback-example-card">
+            <span class="feedback-example-icon" aria-hidden="true">📘</span>
+            <p>“Os níveis deixam os exercícios mais interessantes. Gostaria de ver ainda mais desafios.”</p>
+            <small>Exemplo de comentário · Sugestão</small>
+          </article>
         </div>
       </div>
     </section>
@@ -112,9 +139,9 @@
           <div class="demo-switcher" id="demo-switcher" hidden><button type="button" id="show-sample" class="button button-outline" aria-pressed="true">Ver exemplo (12)</button><button type="button" id="show-local" class="button button-outline" aria-pressed="false">Ver meus acessos</button></div>
           
           <div class="dashboard-top"><div class="dashboard-alert" id="dashboard-mode"></div><button id="dashboard-logout" class="button button-outline" type="button">Sair do painel</button></div>
-          <div class="stats-grid"><div class="stat-card"><span>Registros exibidos</span><strong id="stat-visits">0</strong><small>Entradas na visualização atual</small></div><div class="stat-card"><span>Perfis/dispositivos únicos</span><strong id="stat-unique">0</strong><small>Estimativa de visitantes únicos</small></div><div class="stat-card"><span>Avaliações recebidas</span><strong id="stat-feedback">0</strong><small>Respostas enviadas pelos usuários</small></div></div>
+          <div class="stats-grid"><div class="stat-card"><span>Registros exibidos</span><strong id="stat-visits">0</strong><small>Entradas na visualização atual</small></div><div class="stat-card"><span>Perfis/dispositivos únicos</span><strong id="stat-unique">0</strong><small>Estimativa de visitantes únicos</small></div><div class="stat-card"><span id="stat-feedback-title">Avaliações recebidas</span><strong id="stat-feedback">0</strong><small id="stat-feedback-desc">Respostas enviadas pelos usuários</small></div></div>
           <div class="table-card"><div class="table-heading"><div><h3>Histórico de entradas</h3><p>Nome, data e horário de cada registro exibido.</p></div><button id="download-visits" class="button button-outline" type="button">Exportar CSV</button></div><div class="table-scroll"><table><thead><tr><th>Nome informado</th><th>Data</th><th>Horário (Brasília)</th></tr></thead><tbody id="visits-body"><tr><td colspan="3">Nenhum acesso registrado.</td></tr></tbody></table></div></div>
-          <div class="table-card"><div class="table-heading"><div><h3>Avaliações enviadas</h3><p>Feedback dos participantes após praticar.</p></div><button id="download-feedback" class="button button-outline" type="button">Exportar CSV</button></div><div class="table-scroll"><table><thead><tr><th>Nome</th><th>Nota</th><th>Compreensão</th><th>Comentário</th><th>Data e hora</th></tr></thead><tbody id="feedback-body"><tr><td colspan="5">Nenhuma avaliação registrada.</td></tr></tbody></table></div></div>
+          <div class="table-card"><div class="table-heading"><div><h3 id="feedback-table-title">Avaliações enviadas</h3><p id="feedback-table-note">Feedback dos participantes após praticar.</p></div><button id="download-feedback" class="button button-outline" type="button">Exportar CSV</button></div><div class="table-scroll"><table><thead><tr><th>Nome</th><th>Nota</th><th>Compreensão</th><th>Comentário</th><th>Data e hora</th></tr></thead><tbody id="feedback-body"><tr><td colspan="5">Nenhuma avaliação registrada.</td></tr></tbody></table></div></div>
           <p class="admin-footnote">O total de perfis únicos é aproximado e não é uma contagem verificada de pessoas: o mesmo participante pode acessar de dispositivos diferentes. Os horários são registrados pelo servidor quando o modo online está configurado.</p>
         </div>
       </div>

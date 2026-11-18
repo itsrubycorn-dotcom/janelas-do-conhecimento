@@ -229,15 +229,21 @@
     $('admin-login-panel').hidden=true;
     $('admin-dashboard').hidden=false;
     safeText($('dashboard-mode'),mode);
+    $('dashboard-mode').hidden=state.demoView;
     $('dashboard-logout').hidden=!state.adminActive;
     safeText($('stat-visits'),state.visits.length);
     safeText($('stat-unique'),new Set(state.visits.map(r=>r.uid).filter(Boolean)).size);
     safeText($('stat-feedback'),state.feedbacks.length);
+    safeText($('stat-feedback-title'),state.demoView ? 'Exemplos de avaliações' : 'Avaliações recebidas');
+    safeText($('stat-feedback-desc'),state.demoView ? 'Ilustrações de como o painel funciona' : 'Respostas enviadas pelos usuários');
+    safeText($('feedback-table-title'),state.demoView ? 'Avaliações de exemplo' : 'Avaliações enviadas');
+    safeText($('feedback-table-note'),state.demoView ? '' : 'Feedback dos participantes após praticar.');
+    $('feedback-table-note').hidden=state.demoView;
     fillTable($('visits-body'),state.visits.map(v=>{
       const d=dateParts(v.visitedAt);return [v.name,d.date,d.time];
     }),3);
     fillTable($('feedback-body'),state.feedbacks.map(f=>{
-      const d=dateParts(f.submittedAt);return [f.name,f.rating,f.ease,f.comment,`${d.date} ${d.time}`];
+      const d=dateParts(f.submittedAt);return [f.name,f.rating,f.ease,f.comment,f.synthetic ? '—' : `${d.date} ${d.time}`];
     }),5);
     $('download-visits').disabled=!state.visits.length;
     $('download-feedback').disabled=!state.feedbacks.length;
@@ -249,9 +255,9 @@
     if(cloud.configured())return;
     state.demoView=view==='sample';
     state.visits=state.demoView ? (window.JANELAS_DEMO_VISITS||[]) : readLocalVisits();
-    state.feedbacks=[];state.adminActive=false;
+    state.feedbacks=state.demoView ? (window.JANELAS_DEMO_FEEDBACKS||[]) : [];state.adminActive=false;
     showDashboard(state.demoView
-      ? 'Dados ilustrativos'
+      ? ''
       : 'Acessos registrados neste navegador · não sincronizados');
   }
   async function adminLogin(e){
@@ -283,7 +289,7 @@
   function downloadCSV(type){
     const rows=type==='visits'
       ? [['Tipo de dado','Nome informado','Data','Horário (Brasília)'],...state.visits.map(v=>{const d=dateParts(v.visitedAt);return[state.demoView?'DEMONSTRAÇÃO — REGISTRO SINTÉTICO':cloud.configured()?'ACESSO REGISTRADO NO SERVIDOR':'REGISTRO LOCAL NESTE NAVEGADOR',v.name,d.date,d.time];})]
-      : [['Nome informado','Nota','Compreensão','Comentário','Data','Horário (Brasília)'],...state.feedbacks.map(f=>{const d=dateParts(f.submittedAt);return[f.name,f.rating,f.ease,f.comment,d.date,d.time];})];
+      : [['Tipo de dado','Nome informado','Nota','Compreensão','Comentário','Data','Horário (Brasília)'],...state.feedbacks.map(f=>{const d=dateParts(f.submittedAt);return[f.synthetic?'EXEMPLO ILUSTRATIVO':'AVALIAÇÃO RECEBIDA',f.name,f.rating,f.ease,f.comment,f.synthetic?'':d.date,f.synthetic?'':d.time];})];
     if(rows.length<=1)return;
     const content='\ufeff'+rows.map(row=>row.map(csvSafe).join(';')).join('\r\n');
     const url=URL.createObjectURL(new Blob([content],{type:'text/csv;charset=utf-8;'}));

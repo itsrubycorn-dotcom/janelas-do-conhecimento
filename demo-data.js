@@ -73,3 +73,13 @@ window.JANELAS_DEMO_VISITS = [
     "synthetic": true
   }
 ];
+
+/* Exemplos de preenchimento da tabela. Não são feedbacks enviados por pessoas reais. */
+window.JANELAS_DEMO_FEEDBACKS = [
+  {name:'Mariana Costa Almeida', rating:5, ease:'sim',
+   comment:'Gostei das explicações antes de cada exercício. Ficou mais fácil entender as perguntas.',
+   submittedAt:null, synthetic:true},
+  {name:'Rafael Santos Lima', rating:4, ease:'parcialmente',
+   comment:'Os desafios de matemática são legais. Seria interessante ter mais questões de cada nível.',
+   submittedAt:null, synthetic:true}
+];

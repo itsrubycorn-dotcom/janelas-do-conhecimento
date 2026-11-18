@@ -58,3 +58,26 @@ Se você realizar a atividade com menores de idade, obtenha autorização adequa
 Relaciona-se ao ODS 4 — Educação de qualidade e ao ODS 10 — Redução das desigualdades.
 
 **Aviso:** não envie senhas de administração ao GitHub. A configuração JavaScript web Firebase (incluindo `apiKey`) é pública por projeto; a proteção dos registros está nas regras do Firestore e no Firebase Authentication.
+
+## Três comentários ilustrativos na página
+
+A seção de avaliação apresenta três exemplos curtos de comentários sobre a experiência. **São textos-modelo, não feedbacks recebidos de usuários.** Eles não são gravados no Firestore, não entram na contagem de avaliações recebidas e não devem ser usados como prova de aplicação comunitária. Substitua esses exemplos por depoimentos reais apenas com autorização de quem os enviou.
+
+### Como localizar os comentários
+
+No menu superior, clique em **Comentários**. Os três modelos estão em uma seção própria logo após **Como você vai aprender?**, antes dos exercícios. São exemplos ilustrativos, não são registros reais e não integram o painel de avaliações recebidas.
+
+
+### Avaliações ilustrativas no painel
+
+Na visualização **Ver exemplo (12)**, o painel apresenta **dois feedbacks ilustrativos** com as notas e comentários propostos, distintos das avaliações recebidas pelo Firebase. Os exemplos usam nomes identificados como exemplos e não possuem datas de envio; o arquivo CSV também indica essa origem. Na visualização local, essas linhas não são apresentadas como avaliações reais.
+
+
+### Ajuste visual da tabela de feedbacks
+
+Os dois exemplos ilustrativos utilizam nomes idênticos aos **registros sintéticos de demonstração** da tabela de acessos (Mariana Costa Almeida e Rafael Santos Lima). Nenhuma avaliação real foi atribuída a uma pessoa: esses são registros de exemplo, sem data de envio. A origem ilustrativa permanece identificada no painel e no CSV.
+
+
+## Ajustes finais da apresentação
+
+Foram removidas três notas repetidas da interface: a explicação sob os comentários, o rótulo “Dados ilustrativos” sobre os indicadores do painel e a frase extensa sobre dois exemplos na tabela de avaliações. A identificação da natureza dos dados permanece clara nos cartões (“Exemplo de comentário”), no seletor “Ver exemplo (12)”, no título “Avaliações de exemplo”, na introdução ao painel e no arquivo CSV (com coluna de origem). Esses registros não são avaliações ou acessos reais.
